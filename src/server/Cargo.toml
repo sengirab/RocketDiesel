@@ -1,0 +1,16 @@
+[package]
+name = "server"
+version = "0.1.0"
+authors = ["benjamin <bbloot@dynasource.com>"]
+
+[dependencies]
+rocket = "0.3.16"
+rocket_codegen = "0.3.16"
+diesel = { version = "1.0.0", features = ["postgres"] }
+authentication = {path = "../authentication"}
+database = {path = "../database"}
+
+[dependencies.rocket_contrib]
+version = "*"
+default-features = false
+features = ["json"]
