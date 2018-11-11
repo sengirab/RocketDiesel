@@ -1,5 +1,7 @@
 #![allow(proc_macro_derive_resolution_fallback)]
 #[macro_use]
+extern crate derives;
+#[macro_use]
 extern crate diesel;
 #[macro_use]
 extern crate dotenv_codegen;
@@ -9,6 +11,7 @@ extern crate rocket;
 extern crate uuid;
 
 use diesel::pg::PgConnection;
+pub use models::user::*;
 use r2d2_diesel::ConnectionManager;
 use rocket::http::Status;
 use rocket::Outcome;
@@ -20,7 +23,6 @@ use std::ops::Deref;
 
 pub mod schema;
 pub mod models;
-pub use models::user::*;
 
 type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 

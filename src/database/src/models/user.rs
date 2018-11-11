@@ -1,12 +1,16 @@
 #![allow(proc_macro_derive_resolution_fallback)]
 
-use diesel::Insertable;
-use diesel::Queryable;
-use schema::users;
+use diesel;
+use diesel::PgConnection;
+use diesel::RunQueryDsl;
 use uuid::Uuid;
 
+use crate::schema::users;
+
 // Diesel database representation.
-#[derive(Debug, Clone, Queryable, PartialEq)]
+#[derive(Debug, Clone, CRD, Queryable, PartialEq)]
+#[model = "NewUser"]
+#[table_name = "users"]
 pub struct User {
     pub uuid: Uuid,
     pub first_name: String,
@@ -24,3 +28,13 @@ pub struct NewUser {
     pub username: String,
     pub password: String,
 }
+
+impl User {
+    pub fn test_create(insert: NewUser, conn: &PgConnection) {
+        diesel::insert_into(users::table)
+            .values(&insert)
+            .execute(conn).unwrap();
+    }
+}
+
+

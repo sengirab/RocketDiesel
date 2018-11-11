@@ -11,3 +11,4 @@ r2d2-diesel = "1.0.0"
 uuid = "0.7"
 dotenv = "0.9.0"
 dotenv_codegen = "0.11.0"
+macros = {path = "../macros"}

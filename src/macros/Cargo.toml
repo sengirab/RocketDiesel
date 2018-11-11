@@ -1,0 +1,12 @@
+[package]
+name = "macros"
+version = "0.1.0"
+authors = ["benjamin <bbloot@dynasource.com>"]
+edition = "2018"
+
+[dependencies]
+syn = "0.11.11"
+quote = "0.3.15"
+
+[lib]
+proc-macro = true

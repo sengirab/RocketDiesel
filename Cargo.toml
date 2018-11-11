@@ -7,12 +7,14 @@ authors = ["benjamin <bbloot@dynasource.com>"]
 authentication = {path = "./src/authentication"}
 database = {path = "./src/database"}
 server = {path = "./src/server"}
-derives = {path = "./src/derives"}
+macros = {path = "./src/macros"}
+error = {path = "./src/error"}
 
 [workspace]
 members = [
     "./src/authentication",
     "./src/database",
     "./src/server",
-    "./src/derives",
+    "./src/macros",
+    "./src/error",
 ]
