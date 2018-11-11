@@ -33,14 +33,14 @@ impl<'r> Responder<'r> for BackendError {
         use BackendError::*;
         match self {
             DatabaseUnavailable => {
-                build.merge("Database Could Not be Reached".to_string().respond_to(req)?);
+                build.merge("Connection to the database could not be established.".to_string().respond_to(req)?);
                 build.status(Status::InternalServerError).ok()
             }
             DatabaseError(db_error) => {
                 if let Some(error_message) = db_error {
                     build.merge(error_message.respond_to(req)?);
                 } else {
-                    build.merge("Database Error".to_string().respond_to(req)?);
+                    build.merge("Internal server error.".to_string().respond_to(req)?);
                 }
                 build.status(Status::InternalServerError).ok()
             }
